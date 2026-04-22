@@ -1,9 +1,7 @@
 FROM quay.io/fedora/fedora-bootc:43
 
-RUN systemctl disable bootloader-update.service && systemctl mask bootloader-update.service
-
-#RUN echo 'kargs = ["console=tty0", "cpufreq.default_governor=performance"]' >> /usr/lib/bootc/kargs.d/00-console.toml
-RUN echo 'kargs = ["console=ttyS0,9600", "cpufreq.default_governor=performance"]' >> /usr/lib/bootc/kargs.d/00-console.toml
+RUN echo 'kargs = ["console=tty0", "cpufreq.default_governor=performance", "systemd.gpt_auto=no"]' >> /usr/lib/bootc/kargs.d/00-console.toml
+#RUN echo 'kargs = ["console=ttyS0,9600", "cpufreq.default_governor=performance", "systemd.gpt_auto=no"]' >> /usr/lib/bootc/kargs.d/00-console.toml
 
 RUN <<EOF
 echo -e '[etc]\ntransient = true' > /usr/lib/ostree/prepare-root.conf
@@ -12,5 +10,5 @@ EOF
 
 RUN <<EOF
 echo "root:toor" | chpasswd
-sed -i 's/^#PermitRootLogin.*/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
+sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 EOF
