@@ -1,0 +1,11 @@
+{
+  "feeds": [
+    {"name": "IPNG.ch", "url": "https://ipng.ch/index.xml"},
+    {"name": "RIPE Members", "url": "https://www.ripe.net/member_updates_atom.xml"},
+    {"name": "RIPE Update", "url": "https://status.ripe.net/history.rss"},
+    {"name": "RIPE news", "url": "https://www.ripe.net/news.xml"}
+  ],
+  "poll_interval_seconds": 300,
+  "listen_addr": ":8080"
+}
+
