@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 image="ghcr.io/fsrv-xyz/bootc-demo:main"
 
 truncate -s 6G disk.raw
