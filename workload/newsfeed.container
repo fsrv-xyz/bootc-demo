@@ -1,0 +1,13 @@
+[Unit]
+Description=Run the newsfeed application
+
+[Container]
+Image=registry.fsrv.services/fsrvcorp/services/newsfeed:0.0.1
+Volume=/etc/newsfeed/:/config,ro
+PublishPort=8080:8080
+AutoUpdate=registry
+Exec=/config/config.json
+
+[Install]
+WantedBy=default.target
+
