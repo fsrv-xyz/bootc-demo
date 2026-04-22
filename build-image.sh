@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-image="ghcr.io/fsrv-xyz/bootc-demo:latest"
+image="ghcr.io/fsrv-xyz/bootc-demo:main"
 
-truncate -s 4G disk.raw
+truncate -s 6G disk.raw
 loop_device=$(losetup --show -fP disk.raw)
 trap 'losetup -d "$loop_device"' EXIT
 podman run \
@@ -9,7 +9,6 @@ podman run \
   --rm --privileged \
   --pid=host \
   -v /dev:/dev \
-  -v ./:/project:Z \
   -v /var/lib/containers:/var/lib/containers \
   --security-opt label=type:unconfined_t \
   $image \
